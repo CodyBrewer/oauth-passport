@@ -33,7 +33,7 @@ app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 
 app.get('/', (req, res) => {
-  res.render("home");
+  res.render("home", { user: req.user });
 });
 
 app.listen(PORT, () => {
