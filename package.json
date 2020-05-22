@@ -1,0 +1,25 @@
+{
+  "name": "oauth-passport",
+  "version": "1.0.0",
+  "description": "nodejs rest api example of using oauth with passportjs for authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodyBrewer/oauth-passport.git"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "oauth",
+    "passporthjs"
+  ],
+  "author": "CodyBrewer (https://codybrewer.dev)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodyBrewer/oauth-passport/issues"
+  },
+  "homepage": "https://github.com/CodyBrewer/oauth-passport#readme"
+}
