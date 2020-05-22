@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const User = require('../models/user-model.js');
 
 passport.use(
   new GoogleStrategy({
@@ -9,7 +10,17 @@ passport.use(
   callbackURL: "/auth/google/callback",
   },
   (accessToken, refreshToken, profile, done) => {
-    // passport callback function
-    // User.findOrCreate({ googleId: profile.id}, (err, user) => done(err,user));
+    // check if user already exists in our database
+    User.findOne({ googleId: profile.id }).then((currentUser) => {
+      if (currentUser) console.log('current user retrieved from database' + currentUser);
+      else {
+        new User({
+          username: profile.displayName,
+          googleId: profile.id,
+        }).save().then((newUser) => {
+          console.log('new user created: ' + newUser);
+        });
+      }
+    });
   }),
 );
