@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const authRoutes = require('./routes/auth-routes');
-const passportSetup = require('./config/passport-setup');
+const authRoutes = require('./routes/auth-routes.js');
+const profileRoutes = require('./routes/profile-routes.js')
+const passportSetup = require('./config/passport-setup.js');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
@@ -29,6 +30,7 @@ mongoose.connect(process.env.MONGODB_URI, () => {
 
 // set up routes
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
 
 app.get('/', (req, res) => {
   res.render("home");
